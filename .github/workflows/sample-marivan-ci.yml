@@ -8,13 +8,13 @@ on:
         required: true
         type: string
         default: 'debug'
-    #outputs:
-      #ra_version: 
-       # value: ${{ jobs.ra_version.outputs.version }}
-       # description: The version generated in this build
-  push:
-    branches:
-      - main
+    outputs:
+      ra_version: 
+        value: ${{ jobs.ra_version.outputs.version }}
+        description: The version generated in this build
+  #push:
+    #branches:
+     # - main
 
 jobs:
   ra_version:
