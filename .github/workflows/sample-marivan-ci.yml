@@ -8,13 +8,15 @@ on:
         required: true
         type: string
         default: 'debug'
-    outputs:
-      ra_version: 
-        value: ${{ jobs.ra_version.outputs.version }}
-        description: The version generated in this build
-  #push:
-    #branches:
-     # - main
+      working_directory:
+        type: string
+        description: 'Directory for execute de CI Workflow'     
+        required: true
+        default: 'build'
+    
+  push:
+    branches:
+      - main
 
 jobs:
   ra_version:
@@ -41,3 +43,10 @@ jobs:
     - run: yarn lint
     - run: yarn test:unit:ci
     - run: yarn build:ci
+
+    - name: Save build folder
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ needs.ra_version.outputs.version }}
+        path: ${{ inputs.working_directory }}/${{ needs.ra_version.outputs.version }}.zip
+        if-no-files-found: error
