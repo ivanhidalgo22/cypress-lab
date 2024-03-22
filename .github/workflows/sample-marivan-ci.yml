@@ -20,6 +20,16 @@ on:
       - main
     
 
+env:
+  # npm registry
+  NPM_REGISTRY_FQDN: npm.pkg.github.com
+  # node version
+  NODE_VERSION: '18.x'
+  # Development Registry
+  GITHUB_REGISTRY: 'ghcr.io'
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: 'cypresslab'
+
 jobs:
 
   ra_version:
@@ -70,4 +80,27 @@ jobs:
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
     
+    - name: Extract Docker metadata for several artifacts
+      id: meta
+      uses: docker/metadata-action@v4.3.0
+      with:
+        images: |
+          name=${{ vars.ACR_PROD_SERVER }}/${{ env.IMAGE_NAME_REDUCED }},enable=${{ github.event_name == 'push' && github.ref_name == 'main' }}
+        flavor: |
+          latest=false
+        tags: |
+          type=raw,value=${{ needs.ra_version.outputs.version }}
     
+    # Build and push Docker image with Buildx (don't push on PR)
+    # https://github.com/docker/build-push-action
+    - name: Build and push Docker image
+      id: build-and-push
+      uses: docker/build-push-action@v4.0.0
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        
