@@ -74,6 +74,17 @@
       "balance": 49474,
       "createdAt": "2023-12-07T04:39:38.383Z",
       "modifiedAt": "2024-03-07T00:07:36.510Z"
+    },
+    {
+      "id": "J7ITO8gpc",
+      "uuid": "463e9ba1-5bda-41ca-87e1-a110a883a782",
+      "firstName": "Marianita",
+      "lastName": "De Hidalgo",
+      "username": "lalzate",
+      "password": "$2a$10$wFo84dpVYZJomp.aiZBDXuvwmPKB61xBsyMdNRany1PMqqO6R/90C",
+      "balance": 0,
+      "createdAt": "2024-03-22T18:20:48.470Z",
+      "modifiedAt": "2024-03-22T18:20:48.470Z"
     }
   ],
   "contacts": [
@@ -253,6 +264,17 @@
       "isDeleted": false,
       "createdAt": "2024-01-26T14:01:01.815Z",
       "modifiedAt": "2024-03-07T08:44:31.174Z"
+    },
+    {
+      "id": "3J_76MZBa",
+      "uuid": "0ad2bf7a-01d4-4d66-9703-822ddccfbccf",
+      "userId": "J7ITO8gpc",
+      "bankName": "bank test",
+      "accountNumber": "123123123",
+      "routingNumber": "123421332",
+      "isDeleted": false,
+      "createdAt": "2024-03-22T18:21:30.962Z",
+      "modifiedAt": "2024-03-22T18:21:30.962Z"
     }
   ],
   "transactions": [
