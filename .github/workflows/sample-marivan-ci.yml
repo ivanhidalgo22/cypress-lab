@@ -8,9 +8,21 @@ on:
         required: true
         type: string
         default: 'debug'
-  
+    outputs:
+      releaseVersion: 
+        value: ${{ jobs.ra_version.outputs.release }}
+        description: The release version generated in this build
+      ra_version: 
+        value: ${{ jobs.ra_version.outputs.version }}
+        description: The version generated in this build
+  push:
+    branches:
+      - main
 
 jobs:
+  ra_version:
+    name: "Generate versions from common workflow"
+    uses: ivanhidalgo22/cypress-lab/.github/workflows/raver.yml
   sample-webapp-CI-job:
     runs-on: ubuntu-latest
     environment: sandbox
