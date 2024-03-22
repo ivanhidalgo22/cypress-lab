@@ -22,7 +22,7 @@ on:
 jobs:
   ra_version:
     name: "Generate versions from common workflow"
-    uses: ivanhidalgo22/cypress-lab/.github/workflows/raver.yml
+    uses: ivanhidalgo22/cypress-lab/.github/workflows/raver.yml@v1
   sample-webapp-CI-job:
     runs-on: ubuntu-latest
     environment: sandbox
