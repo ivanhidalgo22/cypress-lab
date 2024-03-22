@@ -13,10 +13,15 @@ on:
         description: 'Directory for execute de CI Workflow'     
         required: true
         default: 'build'
+    outputs:
+      releaseVersion: 
+        value: ${{ jobs.ra_version.outputs.release }}
+        description: The version generated in this build
     
-  push:
-    branches:
-      - main
+  #push:
+    #branches:
+      #- main
+    
 
 jobs:
   ra_version:
