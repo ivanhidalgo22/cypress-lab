@@ -85,7 +85,7 @@ jobs:
       uses: docker/metadata-action@v4.3.0
       with:
         images: |
-          name=${{ vars.ACR_PROD_SERVER }}/${{ env.IMAGE_NAME_REDUCED }},enable=${{ github.event_name == 'push' && github.ref_name == 'main' }}
+          name=${{ vars.ACR_SERVER }}/${{ env.IMAGE_NAME }},enable=${{ github.event_name == 'push' && github.ref_name == 'main' }}
         flavor: |
           latest=false
         tags: |
