@@ -9,9 +9,6 @@ on:
         type: string
         default: 'debug'
     outputs:
-      releaseVersion: 
-        value: ${{ jobs.ra_version.outputs.release }}
-        description: The release version generated in this build
       ra_version: 
         value: ${{ jobs.ra_version.outputs.version }}
         description: The version generated in this build
