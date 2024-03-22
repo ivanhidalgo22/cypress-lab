@@ -13,23 +13,22 @@ on:
         description: 'Directory for execute de CI Workflow'     
         required: true
         default: 'build'
-    outputs:
-      releaseVersion: 
-        value: ${{ jobs.ra_version.outputs.release }}
-        description: The version generated in this build
     
-  #push:
-    #branches:
-      #- main
+    
+  push:
+    branches:
+      - main
     
 
 jobs:
+
   ra_version:
     name: "Generate versions from common workflow"
     uses: ./.github/workflows/raver.yml
   sample-webapp-CI-job:
     runs-on: ubuntu-latest
     environment: sandbox
+    needs: ra_version
     
     steps:
   
@@ -53,5 +52,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ needs.ra_version.outputs.version }}
-        path: ${{ inputs.working_directory }}/${{ needs.ra_version.outputs.version }}.zip
+        path: ${{ "build" }}/${{ needs.ra_version.outputs.version }}.zip
         if-no-files-found: error
