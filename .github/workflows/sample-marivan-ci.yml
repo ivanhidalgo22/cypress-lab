@@ -1,17 +1,13 @@
 name: sample-products-ci-workflow
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
-      dotnetVersion:
-        description: 'node version'
+      logLevel:
+        description: 'Log level'     
         required: true
         type: string
-        default: '18'
-     
-env:
-  
-  NODE_VERSION: '16.x'                      # set this to the node version to use
+        default: 'debug'
   
 
 jobs:
