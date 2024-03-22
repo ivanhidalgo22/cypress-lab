@@ -10,9 +10,7 @@ on:
       version:
         description: Version generated to be used for publishing artifacts, e.g. 1.2.0
         value: ${{ jobs.set_versions.outputs.version }}
-      release: 
-        description: Git tag generated with the same version(can be found in GitHub Tags in the repo), e.g. v1.2.0 
-        value: ${{ jobs.set_versions.outputs.release }}
+      
 env:
   # Get the branch from `github.head_ref` if not empty (it is a PR triggered build), else from `github.ref_name`.
   BRANCH_NAME: ${{ github.head_ref && github.head_ref || github.ref_name }}
@@ -25,7 +23,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.set_versions_step.outputs.version }}
-      release: ${{ steps.set_versions_step.outputs.release }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -43,11 +40,6 @@ jobs:
           bump_each_commit: ${{ github.ref_name == 'main' }}
           # bump_each_commit: true
           change_path: "."
-
-      - uses: ra-ftds/workflows-versioning/.github/actions/calculate-prerelease-id@v1
-        id: calculate_prerelease_id_step
-        with:
-          branch-name: ${{ env.BRANCH_NAME }}
 
       # Runs a set of commands using the runners shell
       - name: Set the versions
@@ -72,29 +64,19 @@ jobs:
             suffix="-hotfix.${{github.run_number}}"
             echo "major $major minor $minor patch $patch" 
             echo "version=$major.$minor.${patch}$suffix" >> $GITHUB_OUTPUT
-            echo "release=v$major.$minor.${patch}$suffix" >> $GITHUB_OUTPUT
             exit 0
-          fi
-
-          PRERELEASE_ID='${{ steps.calculate_prerelease_id_step.outputs.prerelease-id }}'
-          suffix="-$PRERELEASE_ID.${{github.run_number}}"
-          if  [ "${GITHUB_REF_NAME}" == "main" -o "${GITHUB_REF_TYPE}" == "tag" ]; then
-            suffix=""
           fi
 
           echo "Set versions"
           echo "version=${{ steps.app-version.outputs.version }}$suffix" >> $GITHUB_OUTPUT
-          echo "release=${{ steps.app-version.outputs.version_tag }}$suffix" >> $GITHUB_OUTPUT
           
 
-          echo "version=${{ steps.app-version.outputs.version }}$suffix" 
-          echo "release=${{ steps.app-version.outputs.version_tag }}$suffix"
+          echo "version=${{ steps.app-version.outputs.version }}$suffix"  
 
       - name: Create tag and push
         if:  github.ref_name == 'main' || contains(github.ref_name, 'hotfix' )
         run: |
           rc=0
-          git show-ref --tags ${{ steps.set_versions_step.outputs.release }} --quiet || rc="$?"
           
           if  [ $rc -eq 0 ]; then
             echo "App no changes, skip tagging ${{ steps.set_versions_step.outputs.release }}"
