@@ -4,6 +4,11 @@ FROM node:18-alpine
 #ARG APPLICATION_PORT=3004
 #ARG USER=app
 #ARG GROUP=app
+EXPOSE 3000
+EXPOSE 3001
+EXPOSE 80
+EXPOSE 443
+
 ARG WORKING_DIRECTORY=/app
 
 # App will run under workspace folder
@@ -15,9 +20,6 @@ RUN yarn install
 
 # Copy the executables as well as application code
 COPY . .
-
-EXPOSE 3000
-EXPOSE 3001
 
 #ENV PORT=${APPLICATION_PORT}
 # The user in charge of the execution
