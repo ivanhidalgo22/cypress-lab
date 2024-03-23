@@ -1,4 +1,4 @@
-name: sample-products-ci-workflow
+name: sample-webapp-ci-workflow
 
 on:
   workflow_dispatch:
