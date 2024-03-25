@@ -1,5 +1,5 @@
 # Node as base image
-FROM node:18-alpine
+FROM node:16-alpine
 # Arguments that might need to pass
 #ARG APPLICATION_PORT=3004
 #ARG USER=app
