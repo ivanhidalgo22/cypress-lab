@@ -97,7 +97,7 @@ jobs:
       uses: docker/build-push-action@v4.0.0
       with:
         context: .
-        platforms: linux/amd64,linux/arm64,linux/x86_64
+        platforms: linux/x86_64
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
