@@ -1,4 +1,4 @@
-name: sample-webapp-ci-workflow
+name: sample-marivan-ci-workflow
 
 on:
   workflow_dispatch:
@@ -96,10 +96,12 @@ jobs:
       id: build-and-push
       uses: docker/build-push-action@v4.0.0
       with:
-        context: .
+        context: .\
+        platforms: linux/amd64,linux/arm64,linux/x86_64
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
+      
         
