@@ -122,5 +122,7 @@ app.use("/bankTransfers", bankTransferRoutes);
 app.use(express.static(join(__dirname, "../public")));
 
 getBackendPort().then((port) => {
-  app.listen(port);
+  app.listen(3001, "0.0.0.0", () => {
+    console.log(`locahost:${port}] Server is running`);
+  });
 });
