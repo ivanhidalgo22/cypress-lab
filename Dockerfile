@@ -3,7 +3,7 @@ FROM node:16-alpine
 # Arguments that might need to pass
 #ARG APPLICATION_PORT=3004
 #ARG USER=app
-#ARG GROUP=app
+
 EXPOSE 3000
 EXPOSE 3001
 EXPOSE 80
