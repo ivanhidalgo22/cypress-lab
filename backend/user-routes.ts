@@ -13,7 +13,11 @@ import {
   removeUserFromResults,
 } from "./database";
 import { User } from "../src/models/user";
-import { ensureAuthenticated, validateMiddleware } from "./helpers";
+import {
+  checkAuth0Jwt,
+  ensureAuthenticated,
+  validateMiddleware,
+} from "./helpers";
 import {
   shortIdValidation,
   searchValidation,
@@ -23,13 +27,17 @@ import {
 const router = express.Router();
 
 // Routes
-router.get("/", ensureAuthenticated, (req, res) => {
+router.get("/", checkAuth0Jwt, (req, res) => {
   /* istanbul ignore next */
   const users = removeUserFromResults(req.user?.id!, getAllUsers());
   res.status(200).json({ results: users });
 });
 
-router.get("/search", ensureAuthenticated, validateMiddleware([searchValidation]), (req, res) => {
+router.get(
+  "/search",
+  checkAuth0Jwt,
+  validateMiddleware([searchValidation]),
+  (req, res) => {
   const { q } = req.query;
 
   /* istanbul ignore next */
@@ -49,7 +57,7 @@ router.post("/", userFieldsValidator, validateMiddleware(isUserValidator), (req,
 
 router.get(
   "/:userId",
-  ensureAuthenticated,
+  checkAuth0Jwt,
   validateMiddleware([shortIdValidation("userId")]),
   (req, res) => {
     const { userId } = req.params;
@@ -80,7 +88,7 @@ router.get("/profile/:username", (req, res) => {
 
 router.patch(
   "/:userId",
-  ensureAuthenticated,
+  checkAuth0Jwt,
   userFieldsValidator,
   validateMiddleware([shortIdValidation("userId"), ...isUserValidator]),
   (req, res) => {

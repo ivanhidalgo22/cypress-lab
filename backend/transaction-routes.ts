@@ -11,7 +11,7 @@ import {
   getTransactionsForUserForApi,
   getPublicTransactionsByQuery,
 } from "./database";
-import { ensureAuthenticated, validateMiddleware } from "./helpers";
+import { checkAuth0Jwt, ensureAuthenticated, validateMiddleware } from "./helpers";
 import {
   sanitizeTransactionStatus,
   sanitizeRequestStatus,
@@ -29,7 +29,7 @@ const router = express.Router();
 //GET /transactions - scoped user, auth-required
 router.get(
   "/",
-  ensureAuthenticated,
+  checkAuth0Jwt,
   validateMiddleware([
     sanitizeTransactionStatus,
     sanitizeRequestStatus,
@@ -61,7 +61,7 @@ router.get(
 //GET /transactions/contacts - scoped user, auth-required
 router.get(
   "/contacts",
-  ensureAuthenticated,
+  checkAuth0Jwt,
   validateMiddleware([
     sanitizeTransactionStatus,
     sanitizeRequestStatus,
@@ -93,7 +93,7 @@ router.get(
 //GET /transactions/public - auth-required
 router.get(
   "/public",
-  ensureAuthenticated,
+  checkAuth0Jwt,
   validateMiddleware(isTransactionPublicQSValidator),
   (req, res) => {
     const isFirstPage = (req.query.page as unknown as number) === 1;
@@ -136,7 +136,7 @@ router.get(
 //POST /transactions - scoped-user
 router.post(
   "/",
-  ensureAuthenticated,
+  checkAuth0Jwt,
   validateMiddleware(isTransactionPayloadValidator),
   (req, res) => {
     const transactionPayload = req.body;
@@ -155,7 +155,7 @@ router.post(
 //GET /transactions/:transactionId - scoped-user
 router.get(
   "/:transactionId",
-  ensureAuthenticated,
+  checkAuth0Jwt,
   validateMiddleware([shortIdValidation("transactionId")]),
   (req, res) => {
     const { transactionId } = req.params;
@@ -170,7 +170,7 @@ router.get(
 //PATCH /transactions/:transactionId - scoped-user
 router.patch(
   "/:transactionId",
-  ensureAuthenticated,
+  checkAuth0Jwt,
   validateMiddleware([shortIdValidation("transactionId"), ...isTransactionPatchValidator]),
   (req, res) => {
     const { transactionId } = req.params;

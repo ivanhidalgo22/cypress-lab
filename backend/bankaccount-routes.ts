@@ -8,14 +8,14 @@ import {
   createBankAccountForUser,
   removeBankAccountById,
 } from "./database";
-import { ensureAuthenticated, validateMiddleware } from "./helpers";
+import { checkAuth0Jwt, ensureAuthenticated, validateMiddleware } from "./helpers";
 import { shortIdValidation, isBankAccountValidator } from "./validators";
 const router = express.Router();
 
 // Routes
 
 //GET /bankAccounts (scoped-user)
-router.get("/", ensureAuthenticated, (req, res) => {
+router.get("/", checkAuth0Jwt, (req, res) => {
   /* istanbul ignore next */
   const accounts = getBankAccountsByUserId(req.user?.id!);
 
@@ -26,7 +26,7 @@ router.get("/", ensureAuthenticated, (req, res) => {
 //GET /bankAccounts/:bankAccountId (scoped-user)
 router.get(
   "/:bankAccountId",
-  ensureAuthenticated,
+  checkAuth0Jwt,
   validateMiddleware([shortIdValidation("bankAccountId")]),
   (req, res) => {
     const { bankAccountId } = req.params;
@@ -39,7 +39,11 @@ router.get(
 );
 
 //POST /bankAccounts (scoped-user)
-router.post("/", ensureAuthenticated, validateMiddleware(isBankAccountValidator), (req, res) => {
+router.post(
+  "/",
+  checkAuth0Jwt,
+  validateMiddleware(isBankAccountValidator),
+  (req, res) => {
   /* istanbul ignore next */
   const account = createBankAccountForUser(req.user?.id!, req.body);
 
@@ -50,7 +54,7 @@ router.post("/", ensureAuthenticated, validateMiddleware(isBankAccountValidator)
 //DELETE (soft) /bankAccounts (scoped-user)
 router.delete(
   "/:bankAccountId",
-  ensureAuthenticated,
+  checkAuth0Jwt,
   validateMiddleware([shortIdValidation("bankAccountId")]),
   (req, res) => {
     const { bankAccountId } = req.params;

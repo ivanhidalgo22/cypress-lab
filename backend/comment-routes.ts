@@ -2,7 +2,7 @@
 
 import express from "express";
 import { getCommentsByTransactionId, createComments } from "./database";
-import { ensureAuthenticated, validateMiddleware } from "./helpers";
+import { checkAuth0Jwt, ensureAuthenticated, validateMiddleware } from "./helpers";
 import { shortIdValidation, isCommentValidator } from "./validators";
 const router = express.Router();
 
@@ -11,7 +11,7 @@ const router = express.Router();
 //GET /comments/:transactionId
 router.get(
   "/:transactionId",
-  ensureAuthenticated,
+  checkAuth0Jwt,
   validateMiddleware([shortIdValidation("transactionId")]),
   (req, res) => {
     const { transactionId } = req.params;
@@ -25,7 +25,7 @@ router.get(
 //POST /comments/:transactionId
 router.post(
   "/:transactionId",
-  ensureAuthenticated,
+  checkAuth0Jwt,
   validateMiddleware([shortIdValidation("transactionId"), isCommentValidator]),
   (req, res) => {
     const { transactionId } = req.params;
