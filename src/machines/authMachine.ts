@@ -149,13 +149,13 @@ export const authMachine = Machine<AuthMachineContext, AuthMachineSchema, AuthMa
     services: {
       performSignup: async (ctx, event) => {
         const payload = omit("type", event);
-        const resp = await httpClient.post(`http://localhost:${backendPort}/users`, payload);
+        const resp = await httpClient.post(`${process.env.VITE_BACKEND_ENDPOINT}/users`, payload);
         history.push("/signin");
         return resp.data;
       },
       performLogin: async (ctx, event) => {
         return await httpClient
-          .post(`http://localhost:${backendPort}/login`, event)
+          .post(`${process.env.VITE_BACKEND_ENDPOINT}/login`, event)
           .then(({ data }) => {
             history.push("/");
             return data;
@@ -180,7 +180,7 @@ export const authMachine = Machine<AuthMachineContext, AuthMachineSchema, AuthMa
         return Promise.resolve({ user });
       },
       getUserProfile: async (ctx, event) => {
-        const resp = await httpClient.get(`http://localhost:${backendPort}/checkAuth`);
+        const resp = await httpClient.get(`${process.env.VITE_BACKEND_ENDPOINT}/checkAuth`);
         return resp.data;
       },
       getGoogleUserProfile: /* istanbul ignore next */ (ctx, event: any) => {
@@ -215,14 +215,14 @@ export const authMachine = Machine<AuthMachineContext, AuthMachineSchema, AuthMa
       updateProfile: async (ctx, event: any) => {
         const payload = omit("type", event);
         const resp = await httpClient.patch(
-          `http://localhost:${backendPort}/users/${payload.id}`,
+          `${process.env.VITE_BACKEND_ENDPOINT}/users/${payload.id}`,
           payload
         );
         return resp.data;
       },
       performLogout: async (ctx, event) => {
         localStorage.removeItem("authState");
-        return await httpClient.post(`http://localhost:${backendPort}/logout`);
+        return await httpClient.post(`${process.env.VITE_BACKEND_ENDPOINT}/logout`);
       },
       getCognitoUserProfile: /* istanbul ignore next */ (ctx, event: any) => {
         // Map Cognito User fields to our User Model

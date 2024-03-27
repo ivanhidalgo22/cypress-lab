@@ -7,7 +7,7 @@ export const contactsTransactionsMachine = dataMachine("contactsTransactions").w
   services: {
     fetchData: async (ctx, event: any) => {
       const payload = omit("type", event);
-      const resp = await httpClient.get(`http://localhost:${backendPort}/transactions/contacts`, {
+      const resp = await httpClient.get(`${process.env.VITE_BACKEND_ENDPOINT}/transactions/contacts`, {
         params: !isEmpty(payload) ? payload : undefined,
       });
       return resp.data;

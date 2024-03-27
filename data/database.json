@@ -253,6 +253,26 @@
       "isDeleted": false,
       "createdAt": "2024-01-26T14:01:01.815Z",
       "modifiedAt": "2024-03-07T08:44:31.174Z"
+    },
+    {
+      "id": "5OXuwGilD",
+      "uuid": "2f308a21-b51b-4da6-acee-20cbb225b80c",
+      "bankName": "test1",
+      "accountNumber": "322342342",
+      "routingNumber": "123456789",
+      "isDeleted": false,
+      "createdAt": "2024-03-26T23:31:54.384Z",
+      "modifiedAt": "2024-03-26T23:31:54.384Z"
+    },
+    {
+      "id": "bqzlbmZSi",
+      "uuid": "eb240a40-bb95-4b64-bed3-90995b3fbd67",
+      "bankName": "test01",
+      "accountNumber": "1234124234",
+      "routingNumber": "123456789",
+      "isDeleted": false,
+      "createdAt": "2024-03-27T02:39:50.175Z",
+      "modifiedAt": "2024-03-27T02:39:50.175Z"
     }
   ],
   "transactions": [

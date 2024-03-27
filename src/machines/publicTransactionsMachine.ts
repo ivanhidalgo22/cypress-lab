@@ -7,7 +7,7 @@ export const publicTransactionsMachine = dataMachine("publicTransactions").withC
   services: {
     fetchData: async (ctx, event: any) => {
       const payload = omit("type", event);
-      const resp = await httpClient.get(`http://localhost:${backendPort}/transactions/public`, {
+      const resp = await httpClient.get(`${process.env.VITE_BACKEND_ENDPOINT}/transactions/public`, {
         params: !isEmpty(payload) ? payload : undefined,
       });
       return resp.data;

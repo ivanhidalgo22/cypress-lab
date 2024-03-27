@@ -18,7 +18,7 @@ const transactionDataMachine = dataMachine("transactionData").withConfig({
   services: {
     createData: async (ctx, event: any) => {
       const payload = omit("type", event);
-      const resp = await httpClient.post(`http://localhost:${backendPort}/transactions`, payload);
+      const resp = await httpClient.post(`${process.env.VITE_BACKEND_ENDPOINT}/transactions`, payload);
       authService.send("REFRESH");
       return resp.data;
     },
