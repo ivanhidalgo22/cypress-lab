@@ -17,9 +17,11 @@ const router = express.Router();
 // Routes
 
 //GET /notifications/
-router.get("/", ensureAuthenticated, (req, res) => {
+//router.get("/", ensureAuthenticated, (req, res) => {
+router.get("/", (req, res) => {
   /* istanbul ignore next */
-  const notifications = getUnreadNotificationsByUserId(req.user?.id!);
+  //const notifications = getUnreadNotificationsByUserId(req.user?.id!);
+  const notifications = getUnreadNotificationsByUserId("uBmeaz5pX");
 
   res.status(200);
   res.json({ results: notifications });
@@ -28,7 +30,7 @@ router.get("/", ensureAuthenticated, (req, res) => {
 //POST /notifications/bulk
 router.post(
   "/bulk",
-  ensureAuthenticated,
+  //ensureAuthenticated,
   validateMiddleware([...isNotificationsBodyValidator]),
   (req, res) => {
     const { items } = req.body;
@@ -44,7 +46,7 @@ router.post(
 //PATCH /notifications/:notificationId - scoped-user
 router.patch(
   "/:notificationId",
-  ensureAuthenticated,
+  //ensureAuthenticated,
   validateMiddleware([shortIdValidation("notificationId"), ...isNotificationPatchValidator]),
   (req, res) => {
     const { notificationId } = req.params;
