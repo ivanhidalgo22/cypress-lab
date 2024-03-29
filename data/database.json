@@ -11,7 +11,7 @@
       "phoneNumber": "398-225-9900",
       "avatar": "https://avatars.dicebear.com/api/human/ivanhidalgo22@gmail.com.svg",
       "defaultPrivacyLevel": "public",
-      "balance": 1111000,
+      "balance": 150953,
       "createdAt": "2023-03-09T22:26:40.101Z",
       "modifiedAt": "2024-03-07T10:07:57.580Z"
     },
@@ -26,7 +26,7 @@
       "phoneNumber": "410-786-2112",
       "avatar": "https://avatars.dicebear.com/api/human/GjWovtg2hr.svg",
       "defaultPrivacyLevel": "private",
-      "balance": 216426,
+      "balance": 93026,
       "createdAt": "2023-04-23T13:52:10.979Z",
       "modifiedAt": "2024-03-07T09:07:46.709Z"
     },
@@ -255,74 +255,14 @@
       "modifiedAt": "2024-03-07T08:44:31.174Z"
     },
     {
-      "id": "RKDButbhJ",
-      "uuid": "7849a008-064d-4331-ae65-3c338260fca8",
-      "bankName": "3test",
-      "accountNumber": "1234124234",
-      "routingNumber": "123456789",
-      "isDeleted": true,
-      "createdAt": "2024-03-29T02:02:43.591Z",
-      "modifiedAt": "2024-03-29T02:02:43.591Z"
-    },
-    {
-      "id": "yadb5QrXE",
-      "uuid": "b830dd85-ab37-4150-b737-54a5d70dd9dd",
-      "bankName": "bank-test",
-      "accountNumber": "1234124234",
-      "routingNumber": "123456789",
-      "isDeleted": false,
-      "createdAt": "2024-03-29T02:03:14.764Z",
-      "modifiedAt": "2024-03-29T02:03:14.764Z"
-    },
-    {
-      "id": "hZ_JQPCPm",
-      "uuid": "7d4597c9-7caf-4162-b750-ce7da328d041",
-      "bankName": "bank-test",
-      "accountNumber": "1234124234",
-      "routingNumber": "123245567",
-      "isDeleted": false,
-      "createdAt": "2024-03-29T02:03:23.334Z",
-      "modifiedAt": "2024-03-29T02:03:23.334Z"
-    },
-    {
-      "id": "xPisuhYGR",
-      "uuid": "8759b545-c5e6-405b-ae62-ed040049ae56",
-      "bankName": "tewer",
-      "accountNumber": "1234124234",
-      "routingNumber": "123456789",
-      "isDeleted": true,
-      "createdAt": "2024-03-29T02:05:18.931Z",
-      "modifiedAt": "2024-03-29T02:05:18.931Z"
-    },
-    {
-      "id": "gsGYhVujD",
-      "uuid": "e2715b3b-57bb-4e55-8a9f-b541fa013c6c",
-      "bankName": "tewer",
-      "accountNumber": "1234124234",
-      "routingNumber": "123456645",
-      "isDeleted": false,
-      "createdAt": "2024-03-29T02:05:33.773Z",
-      "modifiedAt": "2024-03-29T02:05:33.773Z"
-    },
-    {
-      "id": "Do5XB7OrU",
-      "uuid": "96502b75-1c8e-43d3-9f5e-5eb7d544ac43",
+      "id": "_sLg1jaxm",
+      "uuid": "bcbf39c4-47ed-4b5f-a762-2d995df28521",
       "bankName": "banck 1",
-      "accountNumber": "32234234234",
-      "routingNumber": "123456789",
-      "isDeleted": true,
-      "createdAt": "2024-03-29T02:05:44.349Z",
-      "modifiedAt": "2024-03-29T02:05:44.349Z"
-    },
-    {
-      "id": "inzjlNSlX",
-      "uuid": "a3115589-2951-43ca-b2d5-02d3b6b11cd0",
-      "bankName": "marianita-bank",
-      "accountNumber": "32234234234",
+      "accountNumber": "123456789",
       "routingNumber": "123456789",
       "isDeleted": false,
-      "createdAt": "2024-03-29T02:07:10.946Z",
-      "modifiedAt": "2024-03-29T02:07:10.946Z"
+      "createdAt": "2024-03-29T23:00:54.443Z",
+      "modifiedAt": "2024-03-29T23:00:54.443Z"
     }
   ],
   "transactions": [
@@ -9925,43 +9865,6 @@
       "requestResolvedAt": "",
       "createdAt": "2023-11-10T07:15:28.127Z",
       "modifiedAt": "2024-03-07T21:58:09.668Z"
-    },
-    {
-      "id": "_z9Jcr8cL",
-      "uuid": "1fc365b2-35d0-42d3-b167-d311907bf3dd",
-      "amount": 123300,
-      "description": "qwe",
-      "receiverId": "GjWovtg2hr",
-      "senderId": "ivanhidalgo22@gmail.com",
-      "privacyLevel": "public",
-      "status": "pending",
-      "requestStatus": "pending",
-      "createdAt": "2024-03-29T02:03:44.867Z",
-      "modifiedAt": "2024-03-29T02:03:44.867Z"
-    },
-    {
-      "id": "rK5vUQwBr",
-      "uuid": "e1534150-e8ae-4e50-a7b2-fdbfe5fca2c5",
-      "amount": 1234400,
-      "description": "qwe",
-      "receiverId": "ivanhidalgo22@gmail.com",
-      "senderId": "ivanhidalgo22@gmail.com",
-      "privacyLevel": "public",
-      "status": "complete",
-      "createdAt": "2024-03-29T02:06:03.661Z",
-      "modifiedAt": "2024-03-29T02:06:03.661Z"
-    },
-    {
-      "id": "5DeC2llV6",
-      "uuid": "32f5f885-c2b8-404c-8306-6a878ff17195",
-      "amount": 123400,
-      "description": "test",
-      "receiverId": "GjWovtg2hr",
-      "senderId": "ivanhidalgo22@gmail.com",
-      "privacyLevel": "public",
-      "status": "complete",
-      "createdAt": "2024-03-29T02:07:28.937Z",
-      "modifiedAt": "2024-03-29T02:07:28.937Z"
     }
   ],
   "likes": [
@@ -10538,36 +10441,6 @@
       "isRead": false,
       "createdAt": "2024-02-01T18:53:45.699Z",
       "modifiedAt": "2024-03-07T17:13:52.110Z"
-    },
-    {
-      "id": "Ppg38boJON",
-      "uuid": "157a2afa-46eb-4d31-ba47-c15f48441c04",
-      "userId": "GjWovtg2hr",
-      "transactionId": "_z9Jcr8cL",
-      "status": "requested",
-      "isRead": false,
-      "createdAt": "2024-03-29T02:03:44.875Z",
-      "modifiedAt": "2024-03-29T02:03:44.875Z"
-    },
-    {
-      "id": "ZNipLJq_UA",
-      "uuid": "0a7efd1e-b775-4cee-b5c2-f73787adcfa8",
-      "userId": "ivanhidalgo22@gmail.com",
-      "transactionId": "rK5vUQwBr",
-      "status": "received",
-      "isRead": false,
-      "createdAt": "2024-03-29T02:06:03.685Z",
-      "modifiedAt": "2024-03-29T02:06:03.685Z"
-    },
-    {
-      "id": "nJkXKTyOrV",
-      "uuid": "52f8e79a-4b30-445b-bfe6-d704ee1c0f78",
-      "userId": "GjWovtg2hr",
-      "transactionId": "5DeC2llV6",
-      "status": "received",
-      "isRead": false,
-      "createdAt": "2024-03-29T02:07:28.944Z",
-      "modifiedAt": "2024-03-29T02:07:28.944Z"
     }
   ],
   "banktransfers": [
@@ -11120,16 +10993,6 @@
       "transactionId": "gaggAe7wNoiC",
       "createdAt": "2023-03-24T22:18:19.407Z",
       "modifiedAt": "2024-03-07T13:32:42.472Z"
-    },
-    {
-      "id": "d62vxUzxxd",
-      "uuid": "96994036-3746-4e07-9139-5f430b87229c",
-      "userId": "ivanhidalgo22@gmail.com",
-      "amount": 1083447,
-      "transactionId": "rK5vUQwBr",
-      "type": "withdrawal",
-      "createdAt": "2024-03-29T02:06:03.669Z",
-      "modifiedAt": "2024-03-29T02:06:03.669Z"
     }
   ]
 }

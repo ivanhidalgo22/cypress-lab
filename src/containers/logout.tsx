@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { makeStyles } from "@material-ui/core";
+import { Button, Container, Grid, Typography, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,16 +22,27 @@ const App: React.FC = () => {
 
   if (isAuthenticated) {
     return (
-      <div className={classes.root}>
-        Hello {user.name}, Please confirm loguout action here{" "}
-        <button
-          onClick={() =>
-            logout({ logoutParams: { returnTo: window.location.origin } })
-          }
-        >
-          Log out
-        </button>
-      </div>
+      <Grid container spacing={2} direction="row" alignItems="center">
+        <Grid item>
+          <Typography component="h2" variant="h6" color="primary" gutterBottom>
+            Hello {user.name}, Please confirm loguout action here:{" "}
+          </Typography>
+        </Grid>
+        <Grid>
+          <Button
+            variant="contained"
+            color="primary"
+            dir="center"
+            size="large"
+            data-test="bankaccount-delete"
+            onClick={() =>
+              logout({ logoutParams: { returnTo: window.location.origin } })
+            }
+          >
+            Log out
+          </Button>
+        </Grid>
+      </Grid>
     );
   }
 }
