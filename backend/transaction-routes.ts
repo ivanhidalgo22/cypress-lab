@@ -37,7 +37,7 @@ router.get(
   ]),
   (req, res) => {
     /* istanbul ignore next */
-    const transactions = getTransactionsForUserForApi(req.user?.id!, req.query);
+    const transactions = getTransactionsForUserForApi("ivanhidalgo22@gmail.com", req.query);
 
     const { totalPages, data: paginatedItems } = getPaginatedItems(
       req.query.page as unknown as number,
@@ -69,7 +69,10 @@ router.get(
   ]),
   (req, res) => {
     /* istanbul ignore next */
-    const transactions = getTransactionsForUserContacts(req.user?.id!, req.query);
+    const transactions = getTransactionsForUserContacts(
+      "ivanhidalgo22@gmail.com",
+      req.query,
+    );
 
     const { totalPages, data: paginatedItems } = getPaginatedItems(
       req.query.page as unknown as number,
@@ -145,7 +148,7 @@ router.post(
     remove("transactionType", transactionPayload);
 
     /* istanbul ignore next */
-    const transaction = createTransaction(req.user?.id!, transactionType, transactionPayload);
+    const transaction = createTransaction("ivanhidalgo22@gmail.com", transactionType, transactionPayload);
 
     res.status(200);
     res.json({ transaction });

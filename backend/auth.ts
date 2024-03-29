@@ -3,6 +3,7 @@ import passport from "passport";
 import express, { Request, Response } from "express";
 import { User } from "../src/models/user";
 import { getUserBy, getUserById } from "./database";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const LocalStrategy = require("passport-local").Strategy;
 const router = express.Router();
@@ -47,20 +48,22 @@ router.post("/login", passport.authenticate("local"), (req: Request, res: Respon
 });
 
 router.post("/logout", (req: Request, res: Response): void => {
+  console.log("calling logout page");
   res.clearCookie("connect.sid");
   req.logout(() => res.redirect("/"));
   req.session!.destroy(function (err) {
     res.redirect("/");
   });
+
 });
 
 router.get("/checkAuth", (req, res) => {
   /* istanbul ignore next */
-  if (!req.user) {
-    res.status(401).json({ error: "User is unauthorized" });
-  } else {
-    res.status(200).json({ user: req.user });
-  }
+  //if (!req.user) {
+    //res.status(401).json({ error: "User is unauthorized" });
+  //} else {
+  res.status(200).json({ user: req.user });
+  //}
 });
 
 export default router;

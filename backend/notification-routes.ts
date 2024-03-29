@@ -21,7 +21,7 @@ const router = express.Router();
 router.get("/", checkAuth0Jwt, (req, res) => {
   /* istanbul ignore next */
   //const notifications = getUnreadNotificationsByUserId(req.user?.id!);
-  const notifications = getUnreadNotificationsByUserId("uBmeaz5pX");
+  const notifications = getUnreadNotificationsByUserId("ivanhidalgo22@gmail.com");
 
   res.status(200);
   res.json({ results: notifications });
@@ -36,7 +36,7 @@ router.post(
   (req, res) => {
     const { items } = req.body;
     /* istanbul ignore next */
-    const notifications = createNotifications(req.user?.id!, items);
+    const notifications = createNotifications("ivanhidalgo22@gmail.com", items);
 
     res.status(200);
     // @ts-ignore
@@ -53,7 +53,7 @@ router.patch(
   (req, res) => {
     const { notificationId } = req.params;
     /* istanbul ignore next */
-    updateNotificationById(req.user?.id!, notificationId, req.body);
+    updateNotificationById("ivanhidalgo22@gmail.com", notificationId, req.body);
 
     res.sendStatus(204);
   }

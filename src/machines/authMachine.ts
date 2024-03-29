@@ -4,6 +4,8 @@ import { httpClient } from "../utils/asyncUtils";
 import { history } from "../utils/historyUtils";
 import { User } from "../models";
 import { backendPort } from "../utils/portUtils";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
 
 export interface AuthMachineSchema {
   states: {
@@ -221,8 +223,14 @@ export const authMachine = Machine<AuthMachineContext, AuthMachineSchema, AuthMa
         return resp.data;
       },
       performLogout: async (ctx, event) => {
-        localStorage.removeItem("authState");
-        return await httpClient.post(`${process.env.VITE_BACKEND_ENDPOINT}/logout`);
+        const AppAuth0: React.FC = () => {
+          const { logout, isAuthenticated } = useAuth0();
+          console.log("closing session..");
+          localStorage.removeItem("authState");
+          localStorage.clear();
+          logout();
+        };
+        //return await httpClient.post(`${process.env.VITE_BACKEND_ENDPOINT}/logout`);
       },
       getCognitoUserProfile: /* istanbul ignore next */ (ctx, event: any) => {
         // Map Cognito User fields to our User Model

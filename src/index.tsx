@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from "@material-ui/core";
 import { Auth0Provider } from "@auth0/auth0-react";
 import AppAuth0 from "./containers/AppAuth0";
 import { history } from "./utils/historyUtils";
+import Logout from "./containers/logout";
 
 const theme = createTheme({
   palette: {
@@ -27,9 +28,6 @@ if (process.env.VITE_AUTH0) {
     <Auth0Provider
       domain={process.env.VITE_AUTH0_DOMAIN!}
       clientId={process.env.VITE_AUTH0_CLIENTID!}
-      //redirectUri={window.location.origin}
-      //audience={process.env.VITE_AUTH0_AUDIENCE}
-      //scope={process.env.VITE_AUTH0_SCOPE}
       onRedirectCallback={onRedirectCallback}
       authorizationParams={{
         redirect_uri: window.location.origin,
@@ -41,6 +39,7 @@ if (process.env.VITE_AUTH0) {
       <Router history={history}>
         <ThemeProvider theme={theme}>
           <AppAuth0 />
+          <Logout />
         </ThemeProvider>
       </Router>
     </Auth0Provider>

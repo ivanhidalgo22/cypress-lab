@@ -49,7 +49,7 @@ const AppAuth0: React.FC = () => {
     authState.matches("refreshing") ||
     authState.matches("updating");
 
-  return (
+  return (    
     <div className={classes.root}>
       <CssBaseline />
 
