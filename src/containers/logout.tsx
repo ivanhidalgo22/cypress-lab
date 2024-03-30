@@ -22,7 +22,12 @@ const App: React.FC = () => {
 
   if (isAuthenticated) {
     return (
-      <Grid container spacing={2} direction="row" alignItems="center">
+      <Grid container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      sx={{ minHeight: '100vh' }}>
         <Grid item>
           <Typography component="h2" variant="h6" color="primary" gutterBottom>
             Hello {user.name}, Please confirm loguout action here:{" "}

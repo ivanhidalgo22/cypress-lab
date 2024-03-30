@@ -255,14 +255,14 @@
       "modifiedAt": "2024-03-07T08:44:31.174Z"
     },
     {
-      "id": "_sLg1jaxm",
-      "uuid": "bcbf39c4-47ed-4b5f-a762-2d995df28521",
+      "id": "kTgwZSNsW",
+      "uuid": "d8dc37f7-bb3d-43dc-af9f-7e05d814b51e",
       "bankName": "banck 1",
-      "accountNumber": "123456789",
+      "accountNumber": "1234124234",
       "routingNumber": "123456789",
       "isDeleted": false,
-      "createdAt": "2024-03-29T23:00:54.443Z",
-      "modifiedAt": "2024-03-29T23:00:54.443Z"
+      "createdAt": "2024-03-30T12:56:06.241Z",
+      "modifiedAt": "2024-03-30T12:56:06.241Z"
     }
   ],
   "transactions": [
